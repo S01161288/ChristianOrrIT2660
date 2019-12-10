@@ -1,36 +1,35 @@
 BinarySearch.java
 public class BinarySearch {
-    Node root;
-    Node checkNode;
-    Node parent
+  Node root;
+ Node checkNode;
+Node parent
  public void addNode(Node newNode) {
-        if (root == null) {
-            root = newNode;
-        }
-  else {
-            checkNode = root;
-            while (true) {
-                parent = checkNode;
-                if (newNode.key > checkNode.key) {
-                    checkNode = checkNode.rightChild;
+if (root == null) {
+  root = newNode;
+  }
+else {
+ checkNode = root;
+ while (true) {
+ parent = checkNode;
+  checkNode = checkNode.rightChild;
                     if (checkNode == null) {
                         parent.rightChild = newNode;
                         return;
                     }
                 }
-                if (newNode.key < checkNode.key) {                 
-                    parent = checkNode;
-                    checkNode = checkNode.leftChild;
-                    if (checkNode == null) {
-                        parent.leftChild = newNode;
-                        return;
+    if (newNode.key < checkNode.key) {                 
+    parent = checkNode;
+ checkNode = checkNode.leftChild;
+if (checkNode == null) {
+  parent.leftChild = newNode;
+  return;
                     }
-                } else {
-                    parent = checkNode;
-                    checkNode = checkNode.rightChild;
-                    if (checkNode == null) {
-                        parent.rightChild = newNode;
-                        return;
+ } else {
+    parent = checkNode;
+ checkNode = checkNode.rightChild;
+        if (checkNode == null) {
+    parent.rightChild = newNode;
+ return;
                     }
                 }
             }
@@ -53,13 +52,14 @@ public class BinarySearch {
             System.out.println("No Records to Display" + "\n");
             return true;
         }
-        System.out.println("Name: " + currentNode.name + "\n" + "ID: " + currentNode.key + "\n" + "G.P.A: " + currentNode.gpa + "\n");
-        //using recursion
+        System.out.println("Name: " + currentNode.name );
+        System.out.println("ID:" + currentNode.key);
+        System.out.print("G.P.A" + currentNode.gpa);
         showAllRecords(currentNode.leftChild);
         showAllRecords(currentNode.rightChild);
         return false;
     }
-//added this method to try to break some of the logic out of the already massive delete method
+
     public Node getParent(int key) {
         Node currentNode = root;
         parent = currentNode;
@@ -72,12 +72,10 @@ public class BinarySearch {
             } else {
                 parent = currentNode;
                 currentNode = currentNode.rightChild;
-            }
-        }
+           }
+       }
     }
-
     public void deleteNode(int key) {
-        //to handle case when you only have 1 node you are trying to update in list
         if (key == root.key)    {
             root = null;
         }
@@ -90,13 +88,11 @@ public class BinarySearch {
                     getParent(currentNode.key).leftChild = currentNode.rightChild;
                     currentNode.rightChild.leftChild = currentNode.leftChild;
                     break;
-
                 }
                 if (currentNode.rightChild != null && currentNode.leftChild != null && currentNode.key > getParent(key).key)    {
                     getParent(currentNode.key).rightChild = currentNode.rightChild;
                     currentNode.rightChild.leftChild = currentNode.leftChild;
                     break;
-
                 }
                 //handles the case when deletedNode has no children
                 if(currentNode.leftChild == null && currentNode.rightChild == null && currentNode.key < getParent(key).key)   {
@@ -161,18 +157,14 @@ public class Node {
 }
 
 Driver.java
-
 import java.util.Scanner;
-
 public class Driver {
     public static void main(String[] args) {
         displayClassInfo();
         int choice = 0;
-
         BinarySearch binarySearch = new BinarySearch();
         Node newStudent;
-        while (choice != 6) {
-            
+        while (choice != 6) {  
             Scanner input = new Scanner(System.in);
             Scanner scanner = new Scanner(System.in);
             runMenu();
@@ -219,7 +211,6 @@ public class Driver {
     public static void displayClassInfo() {
 
         System.out.println("Data Structures and Algorithms at Cuyhoga Community College,");
-
     }
     public static void runMenu()    {
         System.out.println("Enter: 1 to add a new student.")
