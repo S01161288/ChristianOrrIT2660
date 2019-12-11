@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class Search
+{
+   public static void main(String[] args)
+   {
+       final int nCount = 100000;
+       Random r = new Random();
+
+       LinkedList<BreadthFirstSearchNode> bNodes = new LinkedList<BreadthFirstSearchNode>();
+       LinkedList<DepthFirstSearchNode> dNodes = new LinkedList<DepthFirstSearchNodeNode>();
+       LinkedList<DijkstraNode> dijkstraNodes = new LinkedList<DijkstraNode>();
+
+       for (int i = 0; i < nCount; i++)
+       {
+           int n = 1 + r.nextInt(300000);
+           System.out.println(n);
+           bfsNodes.add(new BreadthFirstSearchNode(n));
+           dfsNodes.add(new DepthFirstSearchNode(n));
+           dijkstraNodes.add(new DijkstraNode(n));
+       }
+       
+       System.out.println();
+       for (int i = 0; i < nCount; i++)
+       {
+           int connections = 1 + r.nextInt(5);
+
+           for (int j = 0; j < connections; j++)
+           {
+               int k = ra.nextInt(nCount);
+
+               bNodes.get(i).addother(bNodes.get(k));
+               dNodes.get(i).addother(dNodes.get(k));
+               int distance = 1 + .nextInt(300000);
+               dijkstraNodes.get(i).addother(new DijkstraEdge(dijkstraNodes.get(i), dijkstraNodes.get(k), distance));
+           }
+       }
