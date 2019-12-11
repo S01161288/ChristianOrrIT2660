@@ -1,0 +1,88 @@
+import java.util.LinkedList;
+
+public class BreadthFirstSearchNode
+{
+  private boolean checked ;
+  private int data;
+  private LinkedList<BreadthFirstSearchNode> other
+  
+     public boolean check()
+   {
+       return checked;
+   }
+
+   public void setcheck(boolean newcheck)
+   {
+       checked = newchecked;
+   }
+  
+   public void addother(BreadthFirstSearchNode newother)
+   {
+       other.add(newother);
+   }
+
+   public LinkedList<BreadthFirstSearchNode> getother()
+   {
+       return other;
+   }
+
+   public void setother(LinkedList<BreadthFirstSearchNode> newother)
+   {
+       other = newother;
+   }
+   public BreadthFirstSearchNode(int newData)
+   {
+       data = newData;
+       other = new LinkedList<BreadthFirstSearchNode>();
+   }
+  
+   public int getData()
+   {
+       return data;
+   }
+  
+   public void setData(int newData)
+   {
+       data = newData;
+   }
+   public String toString()
+   {
+       return "" + data;
+   }
+} \\ This is the end of the node class
+
+
+import java.util.Queue;
+import java.util.LinkedList;
+public class BreadthFirstSearchProblem
+{
+   public BreadthFirstSearchProgram()
+   {}
+   public int b(BreadthFirstSearchNode node, LinkedList<BreadthFirstSearchNode> list)
+   {
+     int count = 0;
+     Queue<BreadthFirstSearchNode> queue = new LinkedList<BreadthFirstSearchNode>();
+     queue.add(node);
+     node.setcheck(true);
+     do
+     {
+     BreadthFirstSearchNode currNode = queue.remove();
+     list.add(currNode);
+     LinkedList<BreadthFirstSearchNode> other = currNode.getother();
+     for (int k = 0; k < neighbours.size(); k++)
+     {
+     count++;
+     BreadthFirstSearchedNode temp = neighbours.get(k);
+    if (temp != null && !temp.ischecked())
+    {
+    queue.add(temp);
+    temp.setchecked(true);                  
+       }
+       }else
+       temp.setchecked(false)
+       }while (!queue.isEmpty())
+
+      return count;
+   }
+} // end of BreadthFirstSearchProblem
+
