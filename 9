@@ -1,0 +1,43 @@
+class ShortestPath
+{
+static final int q=9;
+int minDistance(int distance[], Boolean Set[])
+{
+int min = Integer.MAX_VALUE 
+int low=-1;
+for (int k = 0; k < q; k++)
+if (Set[k] == false && dist[k] <= min)
+{
+min = dist[k];
+low = k;
+}
+return low;
+}
+void Solution(int dist[], int r)
+{
+System.out.println("Vertex Distance from Source");
+for (int r = 0; r < q; r++)
+System.out.println(r+" \tt "+distance[r]);
+}
+void dijkstra(int graph[][], int src)
+{
+int distance[] = new int[q]; 
+Boolean Set[] = new Boolean[q];
+for (int r = 0; r < q; r++)
+{
+distance[r] = Integer.MAX_VALUE;
+Set[r] = false;
+}
+distance[src] = 0;
+for (int count = 0; count < q-1; count++)
+{
+int u = minDistance(distance, Set);
+Set[u] = true;
+for (int r = 0; r < q; r++)
+if (!Set[r] && graph[u][r]!=0 &&
+distance[u] != Integer.MAX_VALUE &&
+distance[u]+graph[u][r] < dist[r])
+distance[r] = dist[u] + graph[u][r];
+}
+printSolution(distance, q);
+}
