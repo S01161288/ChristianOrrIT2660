@@ -1,0 +1,189 @@
+import java.util.LinkedList;
+public class DijkstraNode implements Comparable<DijkstraNode>
+{
+   private int data;
+   private boolean checked;
+   private int distance = Integer.MAX_VALUE;
+   private DijkstraNode previous;
+   private LinkedList<DijkstraEdge> other;   
+   
+     public DijkstraNode(int newData)
+   {
+       data = newData;
+       other = new LinkedList<DijkstraEdge>();
+   }
+    public LinkedList<DijkstraEdge> getother()
+   {
+       return other;
+   }
+  
+   public void setother(LinkedList<DijkstraEdge> newother)
+   {
+       other = newother;
+   }
+      public void setDistance(int newDistance)
+   {
+       distance = newDistance;
+   }
+  
+   public DijkstraNode getPrevious()
+   {
+       return previous;
+   }
+
+   public void setPrevious(DijkstraNode newprevious)
+   {
+       previous = newPrevious;
+   }
+  
+   public void addother(DijkstraEdge edge)
+   {
+       other.add(edge);
+   }
+    public int getData()
+   {
+       return data;
+   }
+
+   public void setData(int newData)
+   {
+       data = newData;
+   }  
+      
+   public boolean ischeck()
+   {
+       return checked;
+   }
+
+   public void setcheck(boolean newcheck)
+   {
+       checked = newcheck;
+   }
+  
+   public int getDistance()
+   {
+       return distance;
+   }
+    public void addNother(DijkstraEdge edge)
+   {
+       other.add(edge);
+   }
+
+   public LinkedList<DijkstraEdge> getother()
+   {
+       returnother;
+   }
+  
+   public void setother(LinkedList<DijkstraEdge> newother)
+   {
+       other= newother;
+   }
+
+   @Override
+   public int compareTo(DijkstraNode otherVertex)
+   {
+       return Integer.compare(distance, otherVertex.getDistance());
+   }
+  
+} // end of Node class
+
+
+public class DijkstraEdge
+{  
+   private DijkstraNode first;
+   private DijkstraNode last;
+   private int weight;
+   public DijkstraEdge(DijkstraNode newFirstVertex, DijkstraNode newLastVertex, int newWeight)
+   {      
+       first = newFirstVertex;
+       last = newLastVertex;
+       weight = newWeight;
+   }
+
+   public DijkstraNode getFirstVertex()
+   {
+       return first;
+   }
+
+   public void setFirstVertex(DijkstraNode newFirstVertex)
+   {
+       first = newFirstVertex;
+   }
+
+   public DijkstraNode getLastVertex()
+   {
+       return last;
+   }
+
+   public void setLastVertex(DijkstraNode newLastVertex)
+   {
+       last = newLastVertex;
+   }
+  
+   public int getWeight()
+   {
+       return weight;
+   }
+
+   public void setWeight(int newWeight)
+   {
+       weight = newWeight;
+   }
+} // end of Edge class
+
+import java.util.Collections;
+import java.util.PriorityQueue;
+import java.util.LinkedList;
+public class DijkstraAlgorithm
+{
+   public DijkstraAlgorithm()
+   {}
+  
+   public int ShortestPaths(DijkstraNode source)
+   {
+       int count = 0;
+       source.setDistance(0);
+       PriorityQueue<DijkstraNode> w = new PriorityQueue<DijkstraNode>();
+       w.add(source);
+       source.setcheck(true);
+
+       while (!w.isEmpty()){
+          count++;   
+           DijkstraNode currNode = w.poll();
+
+           for (DijkstraEdge currEdge : currNode.getother())
+           {
+               count++;
+               DijkstraNode temp = currEdge.getLastVertex();
+               if (!temp.ischeck())
+               {
+                   int currDist = currNode.getDistance() + currEdge.getWeight();
+
+                   if (currDist < temp.getDistance())
+                   {
+                       temp.setprevious(currNode);
+                       w.add(temp);
+                       w.remove(temp);
+                       temp.setDistance(currDist);
+                   }
+               }
+           }
+           currNode.setcheck(true);
+       }
+      
+       return count;
+   }
+
+   public LinkedList<DijkstraNode> dijkstraSearch(DijkstraNode target)
+   {
+       LinkedList<DijkstraNode> nodes = new LinkedList<DijkstraNode>();
+
+       for (DijkstraNode currNode = target; currNode != null; currNode = currNode.getprevious())
+       {
+           nodes.add(currNode);
+       }
+       Collections.reverse(nodes);      
+       return nodes;
+   }
+
+}
