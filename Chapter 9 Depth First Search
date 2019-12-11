@@ -1,0 +1,54 @@
+port java.util.LinkedList;
+
+public class DepthFirstSearchNode
+{
+  private boolean checked ;
+  private int data;
+  private LinkedList<DepthFirstSearchNode> other
+  
+     public boolean check()
+   {
+       return checked;
+   }
+
+   public void setcheck(boolean newcheck)
+   {
+       checked = newchecked;
+   }
+  
+   public void addother(DepthFirstSearchNode newother)
+   {
+       other.add(newother);
+   }
+
+   public LinkedList<DepthFirstSearchNode> getother()
+   {
+       return other;
+   }
+
+   public void setother(LinkedList<DepthFirstSearchNode> newother)
+   {
+       other = newother;
+   }
+   public DepthFirstSearchNode(int newData)
+   {
+       data = newData;
+       other = new LinkedList<DepthFirstSearchNode>();
+   }
+  
+   public int getData()
+   {
+       return data;
+   }
+  
+   public void setData(int newData)
+   {
+       data = newData;
+   }
+   public String toString()
+   {
+       return "" + data;
+   }
+} \\ This is the end of the node class
+
+
