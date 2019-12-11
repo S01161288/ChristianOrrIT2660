@@ -51,4 +51,32 @@ public class DepthFirstSearchNode
    }
 } \\ This is the end of the node class
 
-
+import java.util.Queue;
+import java.util.LinkedList;
+public class BreadthFirstSearchProblem
+{
+   public DepthFirstSearchProgram()
+   {}
+   public int d(DepthFirstSearchNode node, LinkedList<DepthFirstSearchNode> list)
+   {
+     int count = 0;
+     DepthNode currNode = stack.pop()
+     if (!currNode.check())
+           {
+               list.add(currNode);
+               currNode.setcheck(true);
+           }
+     queue.add(node);
+     node.setcheck(true);
+       LinkedList<DepthFirstSearchNode> other = currNode.getother();
+              int k = 0;
+              while( k < other){
+               k++
+               count++;
+               DepthFirstSearchNode temp = other.get(k);
+               if (temp != null && !temp.check())
+               {
+                   stack.add(temp);
+               }
+           }
+       }
